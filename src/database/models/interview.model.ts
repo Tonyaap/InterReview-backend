@@ -6,7 +6,7 @@ import { User } from './user.model';
 // defining properties for our User model
 export interface IInterview {
   id?: string;
-  userId: string;
+  UserId: string;
   name: string;
   nervousScore: string;
   rapportScore: string;
@@ -25,7 +25,7 @@ export class Interview extends BaseModel implements IInterview {
   public static readonly DefaultScope: FindOptions = {};
 
   public id!: string;
-  public userId!: string;
+  public UserId!: string;
   public name: string;
   public nervousScore: string;
   public rapportScore: string;
@@ -47,7 +47,7 @@ export class Interview extends BaseModel implements IInterview {
           defaultValue: DataTypes.UUIDV4,
           comment: 'Id of the instance',
         },
-        userId: new DataTypes.STRING(),
+        UserId: DataTypes.UUID,
         name: new DataTypes.STRING(),
         nervousScore: new DataTypes.STRING(),
         rapportScore: new DataTypes.STRING(),

@@ -5,7 +5,7 @@ module.exports = {
     await queryInterface.bulkInsert('Interviews', [
       {
         id: "1d353cd0-185f-11eb-adc1-0242ac120002",
-        userId: "c10c9340-1859-11eb-adc1-0242ac120002",
+        UserId: "c10c9340-1859-11eb-adc1-0242ac120002",
         name: 'Google',
         nervousScore: '5',
         rapportScore: '2',
@@ -33,7 +33,7 @@ module.exports = {
 
            {
         id: "241f4298-185f-11eb-adc1-0242ac120002",
-        userId: "c10c9340-1859-11eb-adc1-0242ac120002",
+        UserId: "c10c9340-1859-11eb-adc1-0242ac120002",
         name: 'Albert Heijn',
         nervousScore: '4',
         rapportScore: '2',
@@ -61,7 +61,7 @@ module.exports = {
 
         {
         id: "29fad09c-185f-11eb-adc1-0242ac120002",
-        userId: "c10c9340-1859-11eb-adc1-0242ac120002",
+        UserId: "c10c9340-1859-11eb-adc1-0242ac120002",
         name: 'Phillips',
         nervousScore: '2',
         rapportScore: '4',
@@ -88,7 +88,7 @@ module.exports = {
       },
           {
         id: "2dfc5d96-185f-11eb-adc1-0242ac120002",
-        userId: "c10c9340-1859-11eb-adc1-0242ac120002",
+        UserId: "c10c9340-1859-11eb-adc1-0242ac120002",
         name: 'Ajax',
         nervousScore: '2',
         rapportScore: '1',
@@ -115,7 +115,7 @@ module.exports = {
       },
       {
         id: "34d0904c-185f-11eb-adc1-0242ac120002",
-        userId: "d0309e70-1859-11eb-adc1-0242ac120002",
+        UserId: "d0309e70-1859-11eb-adc1-0242ac120002",
         name: 'Facebook',
         nervousScore: '2',
         rapportScore: '3',

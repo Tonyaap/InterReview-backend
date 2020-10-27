@@ -13,7 +13,7 @@ export async function up(query: QueryInterface) {
         defaultValue: DataTypes.UUIDV4,
         comment: 'Id of the interview',
       },
-      userId: {
+      UserId: {
         type: DataTypes.UUID,
         references: {
           model: 'Users',
