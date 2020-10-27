@@ -6,6 +6,7 @@ import { BaseModel } from './base';
 // region exporting all models from nested folders
 
 export { User, IUser } from './user.model';
+export { Interview, IInterview } from './interview.model';
 
 // endregion
 
@@ -16,12 +17,15 @@ export { User, IUser } from './user.model';
  * */
 export const modelsLoader = () => {
   const array = getFilesRecursively(__dirname)
-    .filter(fileName => fileName.endsWith('model.js'))
-    .map(fileName => {
+    .filter(
+      (fileName) =>
+        fileName.endsWith('model.js') || fileName.endsWith('model.ts'),
+    )
+    .map((fileName) => {
       // tslint:disable-next-line:non-literal-require
       const modelClass = require(fileName);
       const models = {};
-      Object.keys(modelClass).forEach(key => {
+      Object.keys(modelClass).forEach((key) => {
         if (
           modelClass[key].constructor != null &&
           modelClass[key].ModelName != null
@@ -36,7 +40,7 @@ export const modelsLoader = () => {
       [],
     );
   let obj = {};
-  array.forEach(item => {
+  array.forEach((item) => {
     obj = {
       ...obj,
       ...item,
@@ -52,8 +56,8 @@ export const modelsLoader = () => {
 const getAllSubFolders = (baseFolder: string, folderList: string[] = []) => {
   const folders: string[] = fs
     .readdirSync(baseFolder)
-    .filter(file => fs.statSync(path.join(baseFolder, file)).isDirectory());
-  folders.forEach(folder => {
+    .filter((file) => fs.statSync(path.join(baseFolder, file)).isDirectory());
+  folders.forEach((folder) => {
     folderList.push(path.join(baseFolder, folder));
     getAllSubFolders(path.join(baseFolder, folder), folderList);
   });
@@ -63,9 +67,9 @@ const getFilesInFolder = (rootPath: string) => {
   return fs
     .readdirSync(rootPath)
     .filter(
-      filePath => !fs.statSync(path.join(rootPath, filePath)).isDirectory(),
+      (filePath) => !fs.statSync(path.join(rootPath, filePath)).isDirectory(),
     )
-    .map(filePath => path.normalize(path.join(rootPath, filePath)));
+    .map((filePath) => path.normalize(path.join(rootPath, filePath)));
 };
 const getFilesRecursively = (rootPath: string): string[] => {
   const rootFiles = getFilesInFolder(rootPath);

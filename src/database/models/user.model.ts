@@ -1,13 +1,14 @@
 import { DataTypes, FindOptions, Model, ModelCtor, Sequelize } from 'sequelize';
 import { BaseModel } from './base';
+import { Interview } from './interview.model';
 
 // defining properties for our User model
 export interface IUser {
   id?: string;
-  displayName: string;
-  firstName?: string;
-  lastName?: string;
-  language?: string;
+  name: string;
+  email?: string;
+  password?: string;
+
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -19,10 +20,10 @@ export class User extends BaseModel implements IUser {
   public static readonly DefaultScope: FindOptions = {};
 
   public id!: string;
-  public displayName!: string;
-  public firstName: string;
-  public language: string;
-  public lastName: string;
+  public name!: string;
+  public email: string;
+  public password: string;
+
   public createdAt: Date;
   public updatedAt: Date;
 
@@ -36,10 +37,9 @@ export class User extends BaseModel implements IUser {
           defaultValue: DataTypes.UUIDV4,
           comment: 'Id of the instance',
         },
-        displayName: new DataTypes.STRING(),
-        firstName: new DataTypes.STRING(255),
-        lastName: new DataTypes.STRING(255),
-        language: new DataTypes.STRING(10),
+        name: new DataTypes.STRING(),
+        email: new DataTypes.STRING(255),
+        password: new DataTypes.STRING(255),
       },
       {
         sequelize: sequelize,
@@ -57,6 +57,7 @@ export class User extends BaseModel implements IUser {
   public static setAssociations(modelCtors: {
     [modelName: string]: ModelCtor<Model>;
   }) {
+    User.hasMany(modelCtors.Interview);
     // place to set model associations
   }
 

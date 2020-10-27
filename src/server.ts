@@ -7,7 +7,7 @@ import { getDatabase } from './database';
 import { User } from './database/models';
 
 // here is how you can get your database reference
-getDatabase().then(async db => {
+getDatabase().then(async (db) => {
   // your database connection is setup
   // and you can now safely run your queries on your models
 
@@ -18,6 +18,6 @@ getDatabase().then(async db => {
     console.log('Sorry, could not find any user...');
     return;
   }
-  const { displayName, language } = user;
-  console.log('User', displayName, 'found. User speaks', language);
+  const { name } = user;
+  console.log('User', name);
 });
