@@ -16,12 +16,13 @@ export async function up(query: QueryInterface) {
       name: {
         type: new DataTypes.STRING(),
         allowNull: false,
-
+        
         comment: 'Unique display name of the user',
       },
       email: {
         type: new DataTypes.STRING(255),
         allowNull: false,
+        unique: true,
         comment: 'First name of the user',
       },
       password: {

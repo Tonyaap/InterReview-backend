@@ -11,7 +11,7 @@ class Database {
     // get database config
     // const databaseConfig = SERVER_CONFIG.getTyped('database');
 
-    console.log('dburl', process.env);
+    // console.log('dburl', process.env);
 
     const databaseConfig = {
       host: process.env.DB_HOST,
