@@ -16,7 +16,7 @@ class Database {
     const databaseConfig = {
       host: process.env.DB_HOST,
       port: process.env.PORT,
-      username: process.env.USERNAME,
+      username: process.env.DB_USERNAME,
       database: process.env.DATABASE,
       password: process.env.PASSWORD,
       url: process.env.DB_URL || 'localhost',
@@ -41,8 +41,13 @@ class Database {
       },
       timezone: 'UTC',
     };
-    // @ts-ignore
-    this._sequelize = new Sequelize(databaseConfig);
+    console.log(databaseConfig);
+    try {
+      // @ts-ignore
+      this._sequelize = new Sequelize(databaseConfig);
+    } catch (error) {
+      console.log(error);
+    }
 
     // init every model
     Object.keys(this.modelCtors).forEach((modelName) => {
