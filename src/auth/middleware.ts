@@ -2,6 +2,7 @@ import {User} from "../database/models/"
 import {toData} from "./jwt"
 
 export async function auth(req, res, next) {
+  // console.log("REQHEADERSAUTH", req.headers.authorization)
   const auth =
     req.headers.authorization && req.headers.authorization.split(" ");
 

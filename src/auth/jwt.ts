@@ -2,7 +2,6 @@ import {secret} from "../config/secrets";
 import * as jwt from 'jsonwebtoken'
 
 
-
 export function toJWT(data) {
   return jwt.sign(data, secret.jwtSecret, { expiresIn: "2h" });
 }

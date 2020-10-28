@@ -10,7 +10,6 @@ const router = new Router();
 router.post("/login", async (req, res, next) => {
   try {
     const { email, password } = req.body;
-      console.log("WHAt IS EMAIL AND PASSWORd?", req.body)
     if (!email || !password) {
       
       return res
@@ -80,17 +79,20 @@ router.post("/signup", async (req, res) => {
 // - get the users email & name using only their token
 // - checking if a token is (still) valid
 router.get("/me", auth, async (req, res) => {
-  const interview = await Interview.findAll({
-    where: { userId: req.user.id },
-  });
+  console.log("test", req.user.dataValues.id)
+  //  console.log("req user", req.user.dataValues.id);
+  const user = await User.findOne({
 
+    
+    where: { id: req.user.dataValues.id },
+     include:  [Interview]
+  });
   // don't send back the password hash
   delete req.user.dataValues["password"];
   res.status(200).send({
-    ...req.user.dataValues,
-    interview,
+    user
   });
-  console.log("req user", req.user);
+
 });
 
 export default router;
