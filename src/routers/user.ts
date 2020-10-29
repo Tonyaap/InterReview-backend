@@ -16,7 +16,6 @@ router.get('/', async (req, res, next) => {
 
 router.post('/interview', async (req, res, next) => {
   try {
-    console.log('it get is the try catch in the /interview');
     const {
       userId,
       name,
@@ -28,17 +27,8 @@ router.post('/interview', async (req, res, next) => {
       questions,
     } = req.body;
 
-    console.log('userId', userId);
-    console.log('name', name);
-    console.log('nervousScore', nervousScore);
-    console.log('rapportScore', rapportScore);
-    console.log('technicalScore', technicalScore);
-    console.log('preparationScore', preparationScore);
-    console.log('bodylanguageScore', bodylanguageScore);
-    console.log('questions', questions);
-
     const interview = await Interview.create({
-      userId,
+      UserId: userId,
       name,
       questions,
       nervousScore,
@@ -47,7 +37,6 @@ router.post('/interview', async (req, res, next) => {
       preparationScore,
       bodylanguageScore,
     });
-    console.log('this is the interview we created,', interview);
 
     res.json(interview);
   } catch (e) {
